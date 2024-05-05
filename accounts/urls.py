@@ -10,10 +10,3 @@ urlpatterns = [
     path('api-token-auth/',auth_token.obtain_auth_token)
 
 ]
-
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ]
-}
