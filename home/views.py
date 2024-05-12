@@ -1,10 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import Person , Question , Answer
-from .serializers import PersonSerializer , QuestionSerializer , AnswerSerializer
+from .models import Person , Question
+from .serializers import PersonSerializer , QuestionSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from permissions import IsOwnerOrReadOnly
+# from rest_framework.throttling import UserRateThrottle , AnonRateThrottle
 
 # Create your views here.
 class Home(APIView):
@@ -23,6 +24,8 @@ class Home(APIView):
 
 
 class QuestionListView(APIView):
+
+    # throttle_classes = [UserRateThrottle,AnonRateThrottle] implemented on entire api
     def get(self,request):
         question = Question.objects.all()
         srz_data = QuestionSerializer(instance=question, many=True).data
