@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Person , Question
 from .serializers import PersonSerializer , QuestionSerializer
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated , AllowAny
 from rest_framework import status
 from permissions import IsOwnerOrReadOnly
 # from rest_framework.throttling import UserRateThrottle , AnonRateThrottle
@@ -11,6 +11,7 @@ from permissions import IsOwnerOrReadOnly
 class Home(APIView):
 
     permission_classes = [IsAuthenticated,]
+
     def get(self,request):
         # name = request.GET['name']
         # name = request.query_params['name']
@@ -33,7 +34,14 @@ class QuestionListView(APIView):
 
 class QuestionCreateView(APIView):
 
+    """
+
+        Create a new question
+
+    """
+
     permission_classes = [IsAuthenticated,]
+    serializer_class = QuestionSerializer #this is for schema
     def post(self,request):
         srz_data = QuestionSerializer(data=request.POST) # request.data
         if srz_data.is_valid():

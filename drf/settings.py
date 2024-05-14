@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'rest_framework',
     # 'rest_framework.authtoken',
+    'drf_spectacular',
 
 ]
 
@@ -139,6 +140,15 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'anon': '20/hour',
         'user': '1000/day'
-    }
+    },
 
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+}
+
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Ozhan First Api Q%A ',
+    'DESCRIPTION': 'Your project description',
+    'VERSION': '1.0.0',
 }
