@@ -28,6 +28,14 @@ class QuestionListView(APIView):
 
     # throttle_classes = [UserRateThrottle,AnonRateThrottle] implemented on entire api
     def get(self,request):
+
+        # this is for optional pagination :
+        # first import paginator from django.core.paginator
+        # page_number = self.request.query_params.get('page',1)
+        # page_size = self.request.query_params.get('limit',1)
+        # paginator = Paginator(question,page_size)
+        # srz_data = QuestionSerializer(instance=paginator.page(page_number), many=True).data
+
         question = Question.objects.all()
         srz_data = QuestionSerializer(instance=question, many=True).data
         return Response(srz_data,status=status.HTTP_200_OK)
