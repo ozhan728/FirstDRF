@@ -150,7 +150,9 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework.renderers.StaticHTMLRenderer',
 
-    ]
+    ],
+
+    'DEFAULT_METADATA_CLASS': 'permissions.CustomMetadata'
 
 }
 

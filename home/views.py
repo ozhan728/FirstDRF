@@ -10,7 +10,7 @@ from permissions import IsOwnerOrReadOnly
 # Create your views here.
 class Home(APIView):
 
-    permission_classes = [IsAuthenticated,]
+    # permission_classes = [IsAuthenticated,]
 
     def get(self,request):
         # name = request.GET['name']
